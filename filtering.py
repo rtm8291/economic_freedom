@@ -7,6 +7,7 @@ Created on Mon Oct 12 22:22:46 2020
 
 import os
 import pandas as pd
+import numpy as np
 
 os.chdir(r'C:\Users\right\Documents\CCR')
 
@@ -50,7 +51,7 @@ result['무형자산총자산비율'] = result['무형자산_2019'] / result['�
 
 result['부채비율'] = result['부채_2019'] / result['자본_2019']
 
-result['재고자산회전일수'] = (result['재고자산_2018'] + result['재고자산_2019']) / 2 / result['매출원가_2019']
+result['재고자산회전일수'] = (result['재고자산_2018'] + result['재고자산_2019']) / 2 / result['매출액_2019']
 result['매출채권회전일수'] = (result['매출채권_2018'] + result['매출채권_2019']) / 2 / result['매출액_2019']
 result['매입채무회전일수'] = (result['매입채무_2018'] + result['매입채무_2019']) / 2 / result['매출액_2019']
 
@@ -66,3 +67,22 @@ result['잉여현금흐름_2017'] = result['영업현금흐름_2017'] + result['
 result['잉여현금흐름_2016'] = result['영업현금흐름_2016'] + result['투자현금흐름_2016']
 result['잉여현금흐름_2015'] = result['영업현금흐름_2015'] + result['투자현금흐름_2015']
 result['잉여현금흐름평균'] = (result['잉여현금흐름_2019'] + result['잉여현금흐름_2018'] + result['잉여현금흐름_2017'] + result['잉여현금흐름_2016'] + result['잉여현금흐름_2015']) / 5
+
+result['시가총액'] = np.nan
+result['PFCF'] = np.nan
+
+# 필터링
+result = result.loc[
+        (result['CCR_2019'] >= 1) &
+        (result['CCR_2018'] >= 1) &
+        (result['CCR_2017'] >= 1) &
+        (result['CCR_2016'] >= 1) &
+        (result['CCR_2015'] >= 1) &
+        (result['현금자산비율'] >= 0.1) &
+        (result['무형자산총자산비율'] < 0.15) &
+        (result['부채비율'] < 0.5) &
+        (result['현금보유율'] > 1) &
+        (~pd.isna(result['배당금_2019'])) &
+        (result['잉여현금흐름평균'] > 0)
+]
+
