@@ -34,6 +34,14 @@
 2. Intermediate: **IEF**
 3. Short: **SHY**
 4. Ultra Short: **SHV**
+5. Bank Loans: **BKLN**
+6. Emerging Markets: **EMLC**
+7. International Corporate: **JPST**
+8. Investment Grade Corporate: **VCIT**
+9. Junk: **HYLB**
+10. Mortage-Backed: **VMBS**
+11. Municipal Bond: **MUB**
+12. TIPS: **SCHP**
 
 # Commodity
 1. Crude Oil: **USO**
