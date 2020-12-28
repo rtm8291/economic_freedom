@@ -1,4 +1,5 @@
 # Sector
-## Consumer Discretionary: XLY
-## Communication Services: XLC
-## Consumer Staples: XLP
+1. Consumer Discretionary: **XLY**
+2. Communication Services: **XLC**
+3. Consumer Staples: **XLP**
+
